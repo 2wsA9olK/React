@@ -1,0 +1,35 @@
+body {
+  background-color: rgb(219, 222, 236);
+}
+
+.app-wripper {
+  margin: 0;
+  display: grid;
+
+  grid-template-areas:
+  'h h'
+  'n c'
+  ;
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 3fr 10fr;
+}
+
+.app-wrapper-content {
+  grid-area: c;
+}
+
+a:link { 
+  text-decoration: none;
+color: black;
+} 
+a:visited { 
+  text-decoration: none;
+  color: black;	
+} 
+a:active { 
+  text-decoration: none; 
+color: black;
+}
+a:hover {
+  color: black;
+}

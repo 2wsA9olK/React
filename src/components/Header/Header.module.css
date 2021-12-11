@@ -1,0 +1,27 @@
+.header {
+    grid-area: h;
+    display: flex;
+	border-bottom: 1px solid #d6d6d6;
+	justify-content: space-between;
+	align-items: center;
+	height: 50px;
+	font-weight: bold;
+    background-color: white;
+}
+ 
+.logo {
+    display: flex;
+    cursor: pointer;
+}
+
+.header img {
+    margin-left: 200px;
+    width: 35px;
+}
+
+.logoTitle {
+    margin-left: 10px;
+    margin-top: 5px;
+	font-size: 1.2rem;
+}
+

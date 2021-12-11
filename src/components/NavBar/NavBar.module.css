@@ -1,0 +1,18 @@
+.nav {
+  grid-area: n;
+  margin-left: 200px;
+  margin-right: 10px;
+  
+}
+
+.aItem{
+  display: inline-block;
+  border: 1px solid rgb(219, 222, 236);
+  border-radius: 2px;
+  min-width: 120px;
+  padding-left: 10px;  
+}
+
+.item :hover {
+  background-color: rgb(208, 210, 224); 
+}
