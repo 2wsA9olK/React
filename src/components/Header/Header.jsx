@@ -8,7 +8,7 @@ const Header = () => {
                 <div className={hd.logo}>
             <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/LEGO_logo.svg/2048px-LEGO_logo.svg.png'></img>
             <div className={hd.logoTitle}>
-                VK Music
+                ЫыЫыЫыЫ
             </div>
             </div>
             </a>

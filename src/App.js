@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import './App.css';
 import Dialogs from './components/Dialogs/Dialogs';
@@ -11,7 +11,8 @@ import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
 
 
-const App = () => {
+const App = (props) => {
+
   return (
     <BrowserRouter>
       <body>
@@ -19,13 +20,17 @@ const App = () => {
           <Header />
           <NavBar />
           <div class='app-wrapper-content'>
-            <Routes>
-              <Route path='/messages' component={Dialogs} />
-              <Route path='/profile' component={Profile} />
-              <Route path='/news' component={News} />
-              <Route path='/music' component={Music} />
-              <Route path='/setting' component={Settings} />
-            </Routes>
+            <Switch>
+              <Route path='/messages' render={ ()=> <Dialogs state={props.state.dialogsPage} />} />
+              <Route path='/profile' render={ () => 
+              <Profile ProfilePage={props.state.ProfilePage}
+               addPost={props.addPost}
+               updateNewPostText = {props.updateNewPostText}
+               />} />
+              <Route path='/news' render={() => <News />} />
+              <Route path='/music' render={() => <Music />} />
+              <Route path='/settings' render={() => <Settings />} />
+            </Switch>
           </div>
         </div>
       </body>

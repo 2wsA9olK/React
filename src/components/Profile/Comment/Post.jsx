@@ -3,8 +3,10 @@ import React from 'react';
 
 const Post = (props) => {
     return (
-        <div> 
-            <span>Like</span> {props.likeConst}
+        <div>
+            {props.message}  
+            <span> Like:</span> {props.likeConst}
+            
         </div>        
     );
 }

@@ -2,17 +2,32 @@ import React from 'react';
 import  Post from './Post';
 //import mps from './MyPosts.module.css'
 
-const MyPosts = () => {
+const MyPosts = (props) => {
+
+    let myPostsElement =
+    props.myPostData.map (mp => <Post message={mp.message} likeConst={mp.likeConst}/>); 
+
+    let newPostElement = React.createRef();
+
+    let addPost = () => {
+        let text = newPostElement.current.value;
+        props.addPost(text);
+    }
+
+    let onPostChange = () =>{
+        let text = newPostElement.current.value;
+        props.updateNewPostText(text); 
+    }; 
+
     return ( 
         <div>
             MyPosts
             <div>
-                <textarea></textarea>
-                <button>Add Post</button>
+                <textarea  onChange={onPostChange} ref={newPostElement} value={props.newPostText}></textarea>
+                <button onClick={addPost}>Add Post</button>
             </div>
             <div>
-                <Post likeConst='10'/>
-                <Post  likeConst='5'/>
+                {myPostsElement}
             </div>
         </div> 
     );
