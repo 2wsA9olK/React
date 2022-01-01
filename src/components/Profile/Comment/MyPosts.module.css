@@ -1,0 +1,25 @@
+.newPost {
+    margin-top: 10px;
+    padding: 5px;
+    border: 1px solid #d6d6d6;
+    border-radius: 3px;
+	height: 90px;
+    background-color: white;
+}
+
+.textarea {
+    max-width: 600px;
+    min-width: 600px;
+    max-height: 60px;
+    min-height: 50px;
+    border-color: #d6d6d6;
+    border-radius: 3px;
+}
+
+.myPost {
+    margin-top: 10px;
+    padding: 5px;
+    border: 1px solid #d6d6d6;
+    border-radius: 3px;
+    background-color: white;
+}
