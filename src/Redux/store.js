@@ -14,7 +14,7 @@ let store = {
 
     _state: {
         ProfilePage: {
-            myPostData: [
+            myPostDate: [
                 { id: 1, message: 'ыыыы', likeConst: 20 },
                 { id: 1, message: 'это какая-то хрень', likeConst: 10 }
             ],

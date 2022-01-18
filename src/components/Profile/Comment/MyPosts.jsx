@@ -6,7 +6,7 @@ import mps from './MyPosts.module.css'
 const MyPosts = (props) => {
 
     let myPostsElement =
-    props.myPostData.map (mp => <Post message={mp.message} likeConst={mp.likeConst}/>); 
+    props.myPostDate.map (mp => <Post message={mp.message} likeConst={mp.likeConst}/>); 
 
     let newPostElement = React.createRef();
 

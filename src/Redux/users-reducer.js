@@ -1,34 +1,43 @@
-const ADD_POST = 'ADD-POST';
-const UP_DATE_NEW_POST_TEXT = 'UP-DATE-NEW-POST-TEXT';
+const FOLLOW = 'FOLLOW';
+const UNFOLLOW = 'UNFOLLOW';
+const SET_USERS = 'SET-USERS';
 
 let initialState = {
-    myPostData: [
-        { id: 1, message: 'ыыыы', likeConst: 20 },
-        { id: 1, message: 'это какая-то хрень', likeConst: 10 }
-    ],
-    newPostText: ''
+    users: []
 };
 
 const usersReducer = (state = initialState, action) => {
 
     switch (action.type) {
+        case FOLLOW:
+            return {
+                ...state,
+                users: state.users.map(  u =>  {
+                    if (u.id === action.userId) {
+                        return { ...u, followed: true };
+                    }
+                    return u;
+                })
+            } 
+        case UNFOLLOW:
+            return {
+                ...state,
+                users: state.users.map( u => {
+                    if (u.id === action.userId) {
+                        return { ...u, followed: false };
+                    }
+                    return u;
+                })
+            }
+        case SET_USERS:
+            return { ...state, users: [ ...action.users] }
         default:
             return state;
     }
 }
 
-export const addPostActionCreator = () => {
-    return {
-        type: ADD_POST
-    }
-}
+export const followAC = (userId) => ({ type: FOLLOW, userId });
+export const unfollowAC = (userId) => ({ type: UNFOLLOW, userId });
+export const setUsersAC = (users) => ({ type: SET_USERS, users });
 
-export const updateNewPostTextActionCreator = (text) => {
-    return {
-        type: UP_DATE_NEW_POST_TEXT,
-        newText: text
-
-    }
-}
-
-export default profileReducer;
+export default usersReducer;

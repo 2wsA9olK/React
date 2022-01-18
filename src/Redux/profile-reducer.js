@@ -2,7 +2,7 @@ const ADD_POST = 'ADD-POST';
 const UP_DATE_NEW_POST_TEXT = 'UP-DATE-NEW-POST-TEXT';
 
 let initialState = {
-    myPostData: [
+    myPostDate: [
         { id: 1, message: 'ыыыы', likeConst: 20 },
         { id: 1, message: 'это какая-то хрень', likeConst: 10 }
     ],
@@ -22,7 +22,7 @@ const profileReducer = (state = initialState, action) => {
 
             return {
                 ...state,
-                myPostData: [...state.myPostData, newPost],
+                myPostDate: [...state.myPostDate, newPost],
                 newPostText: ''
             };
         }
