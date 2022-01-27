@@ -1,3 +1,8 @@
 .photo {
     width: 100px;
 }
+
+.selectedPage {
+    font-weight: bolder;
+    cursor: pointer;
+}

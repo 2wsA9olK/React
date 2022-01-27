@@ -7,6 +7,10 @@
     background-color: white;
 }
 
+.photoAva {
+    height: 210px;
+}
+
 .friends {
     margin-top: 10px;
     padding: 5px;

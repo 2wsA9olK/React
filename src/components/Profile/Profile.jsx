@@ -6,14 +6,14 @@ import ProfileLeft from './ProfileLeft';
 import MyPostsContainer from './Comment/MyPostsContainer';
 
 
-function Profile(props) {
+const Profile = (props) => {
   return (
     <div className={pf.content}>
       <div className={pf.leftContent}>
-      <ProfileLeft />
+      <ProfileLeft profile={props.profile}/>
       </div>
       <div className={pf.rightContent}>
-        <ProfileInfo />
+        <ProfileInfo profile={props.profile} />
         <MyPostsContainer />
       </div>
     </div>
