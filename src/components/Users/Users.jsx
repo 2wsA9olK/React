@@ -1,5 +1,7 @@
+import axios from "axios";
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { usersAPI } from "../../api/api";
 import userPhoto from "./../../assets/images/iconUsers.png";
 import css from './Users.module.css';
 
@@ -10,6 +12,8 @@ let Users = (props) => {
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i);
     };
+
+
 
     return (
         <div>
@@ -26,14 +30,19 @@ let Users = (props) => {
                 props.users.map(u => <div key={u.id}>
                     <div>
                         <div>
-                            <NavLink to={'/profile/'+u.id}>
+                            <NavLink to={'/profile/' + u.id}>
                                 <img className={css.photo} src={u.photos.small != null ? u.photos.small : userPhoto} />
                             </NavLink>
                         </div>
                         <div>
                             {u.followed
-                                ? <button onClick={() => { props.unfollow(u.id) }}>Unfollow</button>
-                                : <button onClick={() => { props.follow(u.id) }}>Follow</button>
+                                ? <button disabled={props.followingInProgress.some(id => id === u.id)}
+                                    onClick={() => { props.unfollow(u.id) }}>
+                                    Unfollow</button>
+
+                                : <button disabled={props.followingInProgress.some(id => id === u.id)}
+                                    onClick={() => { props.follow(u.id) }}>
+                                    Follow</button>
                             }
                         </div>
                     </div>

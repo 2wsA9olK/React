@@ -3,7 +3,8 @@ import { Switch, Route } from 'react-router-dom';
 
 import './App.css';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
-import Header from './components/Header/Header';
+import HeaderContainer from './components/Header/HeaderContainer';
+import Login from './components/Login/Login';
 import Music from './components/Music/Music';
 import NavBar from './components/NavBar/NavBar';
 import News from './components/News/News';
@@ -17,18 +18,19 @@ const App = (props) => {
   return (
     <body>
       <div className='app-wripper'>
-        <Header />
+        <HeaderContainer />
         <NavBar />
         <div class='app-wrapper-content'>
           <Switch>
             <Route path='/messages' render={() => <DialogsContainer />} />
-            <Route path='/profile' render={() =>
+            <Route path='/profile/:userId?' render={() =>
               <ProfileContainer />} />
-              <Route path='/users' render={() =>
-                <UsersContainer />} />
+            <Route path='/users' render={() =>
+              <UsersContainer />} />
             <Route path='/news' render={() => <News />} />
             <Route path='/music' render={() => <Music />} />
             <Route path='/settings' render={() => <Settings />} />
+            <Route path='/login' render={() => <Login />} />
           </Switch>
         </div>
       </div>

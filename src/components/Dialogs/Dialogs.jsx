@@ -2,12 +2,12 @@ import React from 'react';
 import DialogItem from './DialogItem/DialogItem';
 import Messages from './Messages/Messages';
 import css from './Dialogs.module.css'
+import { Redirect } from 'react-router-dom';
 
-const Dialogs = ({
-    dialogsPage: state,
-    sendMessage: addMessage,
-    updateNewMessageBody,
-}) => {
+const Dialogs = (props) => {
+
+    let state = props.dialogsPage;
+
     const dialogsElements = state.dialogsData.map(
         dlg => <DialogItem name={dlg.name} key={dlg.id} id={dlg.id} />
     );
@@ -20,8 +20,13 @@ const Dialogs = ({
 
     const onNewMessageChange = (e) => {
         let body = e.target.value;
-        updateNewMessageBody(body);
+        props.updateNewMessageBody(body);
     };
+
+    if (!props.isAuth) {
+        return <Redirect to={"./login"} />
+    };
+
     return (
         <div className={css.dialogs}>
             <div className={css.dialogs_items}>
@@ -37,7 +42,7 @@ const Dialogs = ({
                             value={newMessageBody}
                             onChange={onNewMessageChange}>
                         </textarea>
-                        <button onClick={addMessage}>Отправить</button>
+                        <button onClick={props.sendMessage}>Отправить</button>
                     </div>
                 </div>
             </div>

@@ -1,12 +1,11 @@
 import React from 'react';
 import pf from './Profile.module.css';
-import MyPosts from './Comment/MyPosts';
 import ProfileInfo from './ProfileInfo';
 import ProfileLeft from './ProfileLeft';
 import MyPostsContainer from './Comment/MyPostsContainer';
 
-
 const Profile = (props) => {
+
   return (
     <div className={pf.content}>
       <div className={pf.leftContent}>
