@@ -12,7 +12,7 @@ const Profile = (props) => {
       <ProfileLeft profile={props.profile}/>
       </div>
       <div className={pf.rightContent}>
-        <ProfileInfo profile={props.profile} />
+        <ProfileInfo profile={props.profile} status={props.status} updateStatus={props.updateStatus} />
         <MyPostsContainer />
       </div>
     </div>
