@@ -1,11 +1,10 @@
 .content {
     display: grid;
-
   grid-template-columns: 2fr 10fr;
-}
+} 
 
 .rightContent {
-    margin-right: 150px;
+    width: 620px;
 }
 
 .leftContent {
