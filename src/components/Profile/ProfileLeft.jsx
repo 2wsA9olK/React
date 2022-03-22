@@ -1,6 +1,7 @@
 import React from 'react';
 import Preloader from '../common/preloader';
 import css from './ProfileLeft.module.css';
+import userPhoto from "./../../assets/images/iconUsers.png";
 
 function ProfileLeft(props) {
 
@@ -18,7 +19,9 @@ function ProfileLeft(props) {
   return (
     <div className={css.content}>
       <div className={css.ava}>
-        <img src={props.profile.photos.large} className={css.photoAva} />
+        <img src={props.profile.photos.large != null
+        ? props.profile.photos.large
+        : userPhoto } className={css.photoAva} />
       </div>
       <div className={css.friends}>
         Friends

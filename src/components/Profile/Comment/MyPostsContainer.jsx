@@ -4,7 +4,7 @@ import { addPostActionCreator, updateNewPostTextActionCreator } from '../../../R
 import MyPosts from './MyPosts';
 
 
-
+        
 let mapStateToProps = (state) => {
     return {
         myPostDate: state.ProfilePage.myPostDate,

@@ -1,0 +1,8 @@
+.selectedPage {
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.paginator {
+    margin: 10px;
+}
