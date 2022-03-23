@@ -9,7 +9,9 @@ const Profile = (props) => {
   return (
     <div className={pf.content}>
       <div className={pf.leftContent}>
-      <ProfileLeft profile={props.profile}/>
+        <ProfileLeft profile={props.profile}
+          savePhoto={props.savePhoto}
+          isOwner={props.isOwner} />
       </div>
       <div className={pf.rightContent}>
         <ProfileInfo profile={props.profile} status={props.status} updateStatus={props.updateStatus} />
