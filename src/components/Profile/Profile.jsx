@@ -14,7 +14,11 @@ const Profile = (props) => {
           isOwner={props.isOwner} />
       </div>
       <div className={pf.rightContent}>
-        <ProfileInfo profile={props.profile} status={props.status} updateStatus={props.updateStatus} />
+        <ProfileInfo profile={props.profile}
+          status={props.status}
+          updateStatus={props.updateStatus}
+          isOwner={props.isOwner}
+          saveProfile={props.saveProfile} />
         <MyPostsContainer />
       </div>
     </div>

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Preloader from '../common/preloader';
 
 const ProfileStatusWithHooks = (props) => {
 
@@ -26,7 +25,7 @@ const ProfileStatusWithHooks = (props) => {
     return (<div>
         {!editMode &&
             <div>
-                <span onDoubleClick={activateEditeMode}>{props.status || "Установите статус"}</span>
+                <b>Status: </b><span onDoubleClick={activateEditeMode}>{props.status || "Установите статус"}</span>
             </div>
         }
         {editMode &&

@@ -2,7 +2,6 @@ import React from 'react';
 import Preloader from '../common/preloader';
 import css from './ProfileLeft.module.css';
 import userPhoto from "./../../assets/images/iconUsers.png";
-import { propTypes } from 'redux-form';
 
 function ProfileLeft({profile, isOwner, savePhoto }) {
 

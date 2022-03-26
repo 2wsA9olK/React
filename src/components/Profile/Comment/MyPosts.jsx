@@ -10,7 +10,7 @@ const MyPosts = React.memo((props) => {
 
     let myPostsElement = [...props.myPostDate]
         .reverse()
-        .map(mp => <Post message={mp.message} likeConst={mp.likeConst} />);
+        .map(mp => <Post key={mp.id} message={mp.message} likeConst={mp.likeConst} />);
 
     let newPostElement = React.createRef();
 

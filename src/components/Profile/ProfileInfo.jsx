@@ -1,43 +1,79 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Preloader from '../common/preloader';
-import pfInfo from './ProfileInfo.module.css';
+import ProfileDataForm from './ProfileDataForm';
+import css from './ProfileInfo.module.css';
 import ProfileStatusWithHooks from './ProfileStatusWithHooks';
 
-const ProfileInfo = ({profile, status, updateStatus}) => {
+const ProfileInfo = ({ profile, status, updateStatus, isOwner, saveProfile }) => {
+
+  let [editMode, setEditMode] = useState(false);
 
   if (!profile) {
-    return <div className={pfInfo.content}>
-      <div className={pfInfo.userInfo}>
+    return <div className={css.content}>
+      <div className={css.userInfo}>
         <Preloader />
       </div>
-      <div className={pfInfo.album}>
+      <div className={css.album}>
         Album
       </div>
     </div>
 
   }
 
-  return (
-    <div className={pfInfo.content}>
-      <div className={pfInfo.userInfo}>
-        {profile.fullName}<br />
-        <ProfileStatusWithHooks status={status} updateStatus={updateStatus} />
-        About me: {profile.aboutMe}<br />
-        LookingForAJob: {profile.lookingForAJob}<br />
-        LookingForAJobDescription: {profile.lookingForAJobDescription}<br />
-        Contacts: <br />
-        Facebook: {profile.contacts.facebook}<br />
-        Vk: {profile.contacts.vk}<br />
-        Twitter: {profile.contacts.twitter}<br />
-        Instagram: {profile.contacts.instagram}<br />
-        Youtube: {profile.contacts.youtube}<br />
+  const onSubmit = (formData) => {
+    saveProfile(formData).then(()=>{
+      setEditMode(false);
+    })
+  };
 
+  return (
+    <div className={css.content}>
+      <div className={css.userInfo}>
+        {editMode ? <ProfileDataForm initialValues={profile} profile={profile} onSubmit={onSubmit} />
+          : <ProfileData profile={profile}
+            isOwner={isOwner}
+            goToEditeMode={() => { setEditMode(true) }} />}
+        <ProfileStatusWithHooks status={status} updateStatus={updateStatus} />
       </div>
-      <div className={pfInfo.album}>
+      <div className={css.album}>
         Album
       </div>
     </div>
   );
+}
+
+const ProfileData = ({ profile, isOwner, goToEditeMode }) => {
+
+
+
+  return (
+    <div>
+      <div>
+        {isOwner && <button onClick={goToEditeMode}>edit</button>}
+      </div>
+      <b>{profile.fullName}</b><br />
+      <b>About me:</b> {profile.aboutMe}<br />
+      <b>Looking for a job:</b> {profile.lookingForAJob ? "yes" : "no"}<br />
+      {profile.lookingForAJob &&
+        <div><b>My professional skills:</b> {profile.lookingForAJobDescription}</div>}
+      <br />
+      <b>Contacts:</b> <br />
+      <div className={css.contacts}>
+        {Object.keys(profile.contacts).map(key => {
+          return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]} />
+        })}
+      </div>
+    </div>
+  )
+}
+
+
+const Contact = ({ contactTitle, contactValue }) => {
+  return (
+    <div>
+      <b>{contactTitle}: </b> {contactValue}
+    </div>
+  )
 }
 
 export default ProfileInfo;
