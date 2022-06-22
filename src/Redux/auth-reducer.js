@@ -2,7 +2,7 @@ import { Redirect } from "react-router-dom";
 import { stopSubmit } from "redux-form";
 import { authAPI, securityAPI } from "../api/api";
 
-const SET_USER_DATA = 'sumurai-network/auth/SET-USER-DATA';
+const SET_USER_DATA = 'auth/SET-USER-DATA';
 const GET_CAPTCHA_URL_SUCCES = 'sumurai-network/auth/GET-CAPTCHA-URL-SUCCES';
 
 let initialState = {

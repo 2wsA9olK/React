@@ -47,29 +47,34 @@ class App extends Component {
 
     return (
       <body>
-        <div className='app-wripper'>
-          <HeaderContainer />
-          <NavBar />
-          <div class='app-wrapper-content'>
-            <Switch>
-              <Route path='/messages'
-                render={ withSuspense(DialogsContainer)} />
-              <Route path='/profile/:userId?'
-               render={ withSuspense(ProfileContainer)} />
-              <Route path='/users' render={() =>
-                <UsersContainer />} />
-              <Route path='/news' render={() => <News />} />
-              <Route path='/music' render={() => <Music />} />
-              <Route path='/settings' render={() => <Settings />} />
-              <Route path='/login' render={() => <Login />} />
-              <Redirect exact from='/' to='/profile' />
-              <Route path='*' render={()=> <div>404 NOT FOUND</div>} />
-            </Switch>
-          </div>
-        </div>
+        <Switch>
+          <Route path='/login' render={() => <Login />} />
+          <Route path='/' render={() => <AppContent /> } />
+        </Switch>
       </body>
     );
   }
+}
+
+const AppContent = () => {
+  return <div className='app-wripper'>
+    <HeaderContainer />
+    <NavBar />
+    <div class='app-wrapper-content'>
+      <Switch>
+        <Route path='/messages'
+          render={withSuspense(DialogsContainer)} />
+        <Route path='/profile/:userId?'
+          render={withSuspense(ProfileContainer)} />
+        <Route path='/users' render={() =>
+          <UsersContainer />} />
+        <Route path='/news' render={() => <News />} />
+        <Route path='/music' render={() => <Music />} />
+        <Route path='/settings' render={() => <Settings />} />
+        <Redirect exact from='/' to='/profile' />
+      </Switch>
+    </div>
+  </div>
 }
 
 const mapStateToProps = (state) => ({

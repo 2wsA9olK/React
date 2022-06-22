@@ -26,3 +26,8 @@
 	font-size: 1.2rem;
 }
 
+ul {
+    margin: 100px;
+    position: absolute;
+    background-color: #fff;
+}

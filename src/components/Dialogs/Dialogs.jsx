@@ -6,6 +6,8 @@ import { Redirect } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
 import { maxLengthCreator, required } from '../../utils/validators/validators';
 import { Textarea } from '../common/FormsControls/FormsControls';
+import Menu from '../Header/Menu/Menu';
+import MenuContainer from '../Header/Menu/Menu';
 
 const Dialogs = (props) => {
 
@@ -29,21 +31,23 @@ const Dialogs = (props) => {
     };
 
     return (
-        <div className={css.dialogs}>
-            <div className={css.dialogs_items}>
-                {dialogsElements}
-            </div>
-            <div className={css.messages}>
-                <div className={css.message}>
-                    {messagesElements}
+        <div>
+            <div className={css.dialogs}>
+                <div className={css.dialogs_items}>
+                    {dialogsElements}
                 </div>
-                <AddMessageFormRedux onSubmit={AddNewMessage} />
+                <div className={css.messages}>
+                    <div className={css.message}>
+                        {messagesElements}
+                    </div>
+                    <AddMessageFormRedux onSubmit={AddNewMessage} />
+                </div>
             </div>
         </div>
     );
 }
 
-const maxLength50 =  maxLengthCreator(50);
+const maxLength50 = maxLengthCreator(50);
 
 const AddMessageForm = (props) => {
 

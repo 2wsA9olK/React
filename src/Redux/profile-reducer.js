@@ -1,5 +1,6 @@
 import { stopSubmit } from "redux-form";
 import { profileAPI, usersAPI } from "../api/api";
+import Preloader from "../components/common/preloader";
 
 const ADD_POST = 'ADD-POST';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
@@ -49,7 +50,6 @@ const profileReducer = (state = initialState, action) => {
             return { ...state, profile: action.profile }
         }
         case SAVE_PHOTO_SUCCES: {
-            debugger;
             return { ...state, profile: { ...state.profile, photos: action.photos } }
         }
         default:
@@ -79,6 +79,8 @@ export const updateStatus = (status) => async (dispatch) => {
 
     if (response.data.resultCode === 0) {
         dispatch(setStatus(status));
+    } else {
+        alert(response.data.messages);
     }
 };
 

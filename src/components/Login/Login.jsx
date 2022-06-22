@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
@@ -9,15 +9,28 @@ import Lcss from './Login.module.css';
 import css from "./../common/FormsControls/FormsControls.module.css";
 
 const LoginForm = ({ handleSubmit, error, captchaUrl }) => {
+
+    const [passwordShown, setPasswordShown] = useState(false);
+
+    const togglePassword = () => {
+        setPasswordShown(!passwordShown);
+      };
+
     return (
-        <div>
+        <div className={css.form}>
             <form onSubmit={handleSubmit}>
+                <h1>Авторизация</h1>
+                <br />
+                <label>Почта</label>
                 {createField('Email', 'email', Input, [required])}
-                {createField('Password', 'password', Input, [required], { type: "password" })}
+                <div>
+                    {createField('Password', 'password', Input, [required], { type: passwordShown ? "text" : "password" })}
+                    <img onClick={togglePassword} src="https://findcreek.com/assets/img/icons/eye-off.svg"></img>
+                </div>
                 {createField(null, 'rememberMe', Input, [], { type: "checkbox" }, "remember me")}
 
                 {captchaUrl && <img src={captchaUrl} />}
-                {captchaUrl && createField('Symbols from image', 'captcha', Input, [required], {} ) }
+                {captchaUrl && createField('Symbols from image', 'captcha', Input, [required], {})}
 
                 {error && <div className={css.formSummarreError}>
                     {error}
@@ -47,7 +60,6 @@ const Login = (props) => {
     };
     return (
         <div>
-            <h1>Login</h1>
             <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl} />
         </div>
     );
